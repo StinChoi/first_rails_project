@@ -6,9 +6,19 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts "seeds file running"
+
+require "faker"
+Note.destroy_all
+
+Note.create(title: "Note 1", author: "Austin", body:"You stud")
+
 10.times do
   Note.create(
     title: Faker::Hacker.abbreviation,
-    Description: Facker::Hacker, say_something_smart,
+    body: Faker::Hacker.say_something_smart,
+    author: Faker::Name.name,
   )
 end
+
+puts "seeded #{Note.all.length} notes seeded"
